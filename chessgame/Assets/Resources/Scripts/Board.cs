@@ -15,14 +15,14 @@ public class Board : MonoBehaviour
         {
             for (int y = 0; y < 8; y++)
             {
-                bool isWhite = (x + y) % 2 == 0;
+                bool isBlack = (x + y) % 2 == 0;
 
                 Vector3 worldPosition = boardGrid.GetCellCenterWorld(new Vector3Int(x - 4, y - 4, 0));
 
                 GameObject tile = Instantiate(tilePrefab, worldPosition, Quaternion.identity, tilesRoot);
                 tile.name = $"Tile_{x}_{y}";
 
-                if (!isWhite)
+                if (isBlack)
                 {
                     if (tile.TryGetComponent(out SpriteRenderer sprite))
                     {
@@ -31,5 +31,10 @@ public class Board : MonoBehaviour
                 }
             }
         }
+    }
+
+    public Vector3 GetWorldPositionByIndex(Vector2Int boardTilePosition)
+    {
+        return boardGrid.GetCellCenterWorld(new Vector3Int(boardTilePosition.x - 5, boardTilePosition.y - 5, 0));
     }
 }
