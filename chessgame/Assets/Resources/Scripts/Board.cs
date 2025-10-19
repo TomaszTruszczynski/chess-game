@@ -35,6 +35,6 @@ public class Board : MonoBehaviour
 
     public Vector3 GetWorldPositionByIndex(Vector2Int boardTilePosition)
     {
-        return boardGrid.GetCellCenterWorld(new Vector3Int(boardTilePosition.x - 5, boardTilePosition.y - 5, 0));
+        return boardGrid.GetCellCenterWorld(new Vector3Int(boardTilePosition.x - 5, boardTilePosition.y - 5, -1));
     }
 }

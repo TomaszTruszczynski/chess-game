@@ -9,19 +9,22 @@ public class Pawns : MonoBehaviour
 
     void Start()
     {
-        for(int x = 1; x < 9; x++)
+        for (int x = 1; x < 9; x++)
         {
             Vector3 worldPosition = board.GetWorldPositionByIndex(new Vector2Int(x, 2));
 
-            GameObject pawn = Instantiate(pawnPrefab,worldPosition, Quaternion.identity, transform);
+            GameObject go = Instantiate(pawnPrefab, worldPosition, Quaternion.identity, transform);
 
-            pawnsList.Add(pawn);
+            pawnsList.Add(go);
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void ResetGame()
     {
-        
+        foreach (GameObject pawn in pawnsList)
+        {
+            Destroy(pawn);
+        }
+        pawnsList.Clear();
     }
 }
+
